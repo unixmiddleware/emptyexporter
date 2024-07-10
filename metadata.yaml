@@ -1,0 +1,6 @@
+type: exmptyexporter
+status:
+  class: exporter
+  stability:
+    beta: [logs]
+    stable: [metrics,traces]
