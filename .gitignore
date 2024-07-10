@@ -20,3 +20,14 @@
 # Go workspace file
 go.work
 go.work.sum
+
+
+# yaml
+*.yaml
+
+# cmd
+cmd/ocb
+cmd/*.go
+cmd/go.sum
+cmd/go.mod
+cmd/otelcol-onestream

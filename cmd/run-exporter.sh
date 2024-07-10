@@ -1,5 +1,5 @@
 EXPORTER_CONFIG="exporter-config.yaml"
-COLLECTOR_BINARY="./otelcol-dev"
+COLLECTOR_BINARY="./otelcol-onestream"
 
 cat <<eoConfig > ${EXPORTER_CONFIG}
 exporters:
@@ -8,7 +8,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [emptyexporter,debu]
+      exporters: [emptyexporter,debug]
     metrics:
       receivers: [otlp]
       exporters: [emptyexporter,debug]

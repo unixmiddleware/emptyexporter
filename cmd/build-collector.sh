@@ -8,7 +8,7 @@ OCB_URL="https://github.com/open-telemetry/opentelemetry-collector/releases/down
 
 CUSTOM_EXPORTER=onestream
 CUSTOM_EXPORTER_NAME=${CUSTOM_EXPORTER}exporter
-CUSTOM_EXPORTER_VERSION=1.0.0
+CUSTOM_EXPORTER_VERSION=0.0.1
 CUSTOM_EXPORTER_VVER=v${CUSTOM_EXPORTER_VERSION}
 CUSTOM_COLLECTOR_NAME=otelcol-${CUSTOM_EXPORTER}
 CUSTOM_COLLECTOR_DESCRIPTION="Customer OTEL Collector for ${CUSTOM_EXPORTER}"
@@ -32,7 +32,7 @@ cat <<- eoCAT
 dist:
   name: ${CUSTOM_COLLECTOR_NAME}
   description: ${CUSTOM_COLLECTOR_DESCRIPTION}
-  output_path: ./${CUSTOM_COLLECTOR_NAME}
+  output_path: ./
   otelcol_version: ${OTEL_VERSION}
   version: ${CUSTOM_EXPORTER_VERSION}
   go: ${GO_BINARY}
@@ -40,6 +40,8 @@ dist:
 exporters:
   - gomod: go.opentelemetry.io/collector/exporter/debugexporter ${VVER}
   - gomod: go.opentelemetry.io/collector/exporter/otlpexporter ${VVER}
+  - gomod: https://github.com/unixmiddleware/emptyexporter ${CUSTOM_EXPORTER_VVER}
+    path: ../emptyexporter
 
 processors:
   - gomod: go.opentelemetry.io/collector/processor/batchprocessor ${VVER}
